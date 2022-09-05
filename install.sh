@@ -173,6 +173,11 @@ on_install() {
   else
     abort "Config file is missing!"
   fi
+  ui_print "* Creating resolv.conf path"
+  mkdir -p $MODDIR/system/etc
+  ui_print "* Creating resolv.conf"
+  printf "nameserver 127.0.0.1\nnameserver 1.1.1.1" > $MODDIR/system/etc/resolv.conf
+  chmod 644 $MODDIR/system/etc/resolv.conf
 
   . $TMPDIR/option.sh
 
